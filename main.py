@@ -1,27 +1,15 @@
 import sys
-from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget
-from ui_MainWindows import *
-class MainWindow(QMainWindow):
-    def __init__(self):
-        super().__init__()
+from PySide6.QtWidgets import QApplication, QMainWindow
+from ui_MainWindows import Ui_MainWindow  # Ensure this file exists and is correctly generated
 
-        # Set the main window's properties
-        self.setWindowTitle("PySide6 QMainWindow Example")
-        self.setGeometry(100, 100, 800, 600)  # x, y, width, height
-
-        # Add a central widget (QMainWindow requires one)
-        self.central_widget = QWidget()
-        self.setCentralWidget(self.central_widget)
-
-        # Add a layout and some widgets
-        layout = QVBoxLayout()
-        label = QLabel("Welcome to PySide6 QMainWindow!")
-        layout.addWidget(label)
-
-        self.central_widget.setLayout(layout)
+class MainWindow(QMainWindow):  # Inherit from QMainWindow
+    def __init__(self, parent=None):
+        super().__init__(parent)  # Initialize QMainWindow
+        self.ui = Ui_MainWindow()  # Create an instance of the UI class
+        self.ui.setupUi(self)  # Setup the UI on this QMainWindow instance
+        self.show()  # Show the main window
 
 if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = MainWindow()
-    window.show()  # Show the main window
-    sys.exit(app.exec())
+    sys.exit(app.exec())  # Start the event loop
