@@ -1,6 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication, QMainWindow, QLabel, QVBoxLayout, QWidget
-from Chart import *
+from ui_MainWindows import *
 class MainWindow(QMainWindow):
     def __init__(self):
         super().__init__()
